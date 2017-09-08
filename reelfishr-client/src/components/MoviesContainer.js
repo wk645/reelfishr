@@ -4,6 +4,7 @@ import MoviesList from './MoviesList'
 // import {moviesData} from '../Dummy'
 
 const MoviesContainer = (props) => {
+	// console.log(props.movies)
 
 	return (
 		<div>

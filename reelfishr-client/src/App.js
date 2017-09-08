@@ -42,8 +42,8 @@ class App extends Component {
 	}
 
   render() {
-  	console.log(this.state.searchTerm)
-  	console.log(this.state.movies)
+  	// console.log(this.state.searchTerm)
+  	// console.log(this.state.movies)
     return (
       <div>
         <Home />
