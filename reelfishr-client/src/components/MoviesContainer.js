@@ -12,7 +12,8 @@ export default class MoviesContainer extends React.Component {
 			movies: [],
 			similarMovies: [],
 			targetMovie: "",
-			searchTerm: ""
+			searchTerm: "",
+			setting: "similar"
 		}
 	}
 
@@ -26,18 +27,24 @@ export default class MoviesContainer extends React.Component {
 	// 	fetch("https://api.themoviedb.org/3/movie/550?api_key=2b11df788b627a6cd7c12d0399f6d17f").then(res => res.json()).then(data => this.setState({ movies: data }))
 	// }
 
-	fetchSimilarMovie = (movie) => {
-		fetch(`https://api.themoviedb.org/3/movie/${movie}/similar?api_key=2b11df788b627a6cd7c12d0399f6d17f`).then(res => res.json()).then(data => this.setState({ similarMovies: data.results }))
+	// /movie/{movie_id}/recommendations
+
+	fetchMovies = (movie) => {
+		fetch(`https://api.themoviedb.org/3/movie/${movie}/${this.state.setting}?api_key=2b11df788b627a6cd7c12d0399f6d17f`).then(res => res.json()).then(data => this.setState({ similarMovies: data.results }))
 	}
 
-	handleChange = (event) => {
+	handleSearch = (event) => {
 		this.setState({ searchTerm: event.target.value })
+	}
+
+	handleSelect = (event) => {
+		this.setState({ setting: event.target.value })
 	}
 
 	render() {
 		return (
 			<div>
-				<Search searchTerm={this.state.searchTerm} handleChange={this.handleChange} fetchCB={this.fetchSimilarMovie} />
+				<Search searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} fetchCB={this.fetchMovies} handleSelect={this.handleSelect} />
 				<MoviesList movies={this.state.movies} searchTerm={this.state.searchTerm} similarMovies={this.state.similarMovies} />
 			</div>
 		)

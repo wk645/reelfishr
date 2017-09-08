@@ -8,8 +8,15 @@ const Search = (props) => {
 
 	return (
 		<div><center>
-			<input type="text" onChange={props.handleChange} value={props.searchTerm} placeholder={"Search for a Movie..."} />
-			<button onClick={click} type="submit" value="Submit" />
+			<input type="text" onChange={props.handleSearch} value={props.searchTerm} placeholder={"Search for a Movie..."} />
+			<button onClick={click} type="submit" value="Submit" name="Submit">Submit</button>
+			<br />
+			<select onChange={props.handleSelect}>
+				<option value="similar">Get Similar Movies
+				</option>
+				<option value="recommendations">Get Recommendations
+				</option>
+			</select>
 			<br />
 			<br />
 	    </center></div>
@@ -17,3 +24,8 @@ const Search = (props) => {
 }
 
 export default Search
+
+// select box for recommendation (one) or similar movies (list)
+
+// <select onChange={this.handleChange}>{this.state.competitions.map(competition => <option key={competition.id} value={competition.id}>{competition.caption}</option>)})
+// 				</select>
