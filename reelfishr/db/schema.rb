@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170908143034) do
     t.integer "popularity"
     t.string "overview"
     t.string "poster_path"
+    t.integer "tmdb_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

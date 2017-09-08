@@ -6,6 +6,7 @@ class CreateMovies < ActiveRecord::Migration[5.1]
     	t.integer :popularity
     	t.string :overview
     	t.string :poster_path
+      t.integer :tmdb_id
       	t.timestamps
     end
   end

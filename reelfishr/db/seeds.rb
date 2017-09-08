@@ -16,7 +16,8 @@ requests.each do |r|
 		runtime: r["runtime"], 
 		popularity: r["popularity"], 
 		overview: r["overview"],  
-		poster_path: r["poster_path"])
+		poster_path: r["poster_path"],
+		tmdb_id: r["id"])
 	genres = r["genres"].map {|g| Genre.find_by(name: g["name"])}
 	mov.genres << genres
 end
