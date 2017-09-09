@@ -1,4 +1,5 @@
 import React from 'react'
+import { Input, Button, Dropdown } from 'semantic-ui-react'
 
 const Search = (props) => {
 
@@ -14,18 +15,27 @@ const Search = (props) => {
 		props.handleChange(event.target.value)
 	}
 
+	const options = [
+	  {
+	    text: 'Get Similar Movies',
+	    value: 'similar'
+	  },
+
+	  {
+	    text: 'Get Recommendations',
+	    value: 'recommendations'
+	  }
+
+	]
 
 	return (
 		<div><center>
-			<input type="text" onChange={change} value={props.searchTerm} placeholder={"Search for a Movie..."} />
-			<button onClick={click} type="submit" value="Submit" name="Submit">Submit</button>
 			<br />
-			<select onChange={select}>
-				<option value="similar">Get Similar Movies
-				</option>
-				<option value="recommendations">Get Recommendations
-				</option>
-			</select>
+			<Input type="text" onChange={change} value={props.searchTerm} focus placeholder="Search for a Movie..." />
+			<Button secondary onClick={click} type="submit" value="Submit" name="Submit">Submit</Button>
+			<br />
+			<br />
+			<Dropdown placeholder="Select an Option" fluid selection options={options} onChange={select} />
 			<br />
 			<br />
 	    </center></div>
@@ -34,7 +44,9 @@ const Search = (props) => {
 
 export default Search
 
-// select box for recommendation (one) or similar movies (list)
-
-// <select onChange={this.handleChange}>{this.state.competitions.map(competition => <option key={competition.id} value={competition.id}>{competition.caption}</option>)})
-// 				</select>
+// <select onChange={select}>
+// 	<option value="similar">Get Similar Movies
+// 	</option>
+// 	<option value="recommendations">Get Recommendations
+// 	</option>
+// </select>

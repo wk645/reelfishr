@@ -1,12 +1,13 @@
 import React from 'react'
 import Movie from './Movie'
+// import {Grid} from 'semantic-ui-react'
 
 const MoviesList = (props) => {
 
 	return (
-		<div>
+		<div><center>
 			{props.searchTerm === "" ? null : <Movie movies={props.movies} />}
-		</div>
+		</center></div>
 	)
 }
 
