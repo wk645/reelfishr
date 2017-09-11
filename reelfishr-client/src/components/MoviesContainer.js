@@ -1,14 +1,22 @@
 import React from 'react'
-
-import MoviesList from './MoviesList'
-// import {moviesData} from '../Dummy'
+import Movie from './Movie'
+import { Card } from 'semantic-ui-react'
 
 
 const MoviesContainer = (props) => {
 	// console.log(props.movies)
 
 	return (
-			<MoviesList movies={props.movies} searchTerm={props.searchTerm} similarMovies={props.similarMovies} />
+		<div>
+		<br />
+		<br />
+			<center>
+				<Card.Group>
+			{props.results.length === 0 ? null : props.results.map((movie, index) => <Movie key={index} 
+				movie={movie} />)}
+				</Card.Group>
+			</center>
+		</div>
 	)
 }
 

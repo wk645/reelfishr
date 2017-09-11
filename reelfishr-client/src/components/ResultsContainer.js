@@ -1,15 +1,16 @@
 import React from 'react'
-// import Search from 'search'
+import Movie from './Movie'
 import MoviesContainer from './MoviesContainer'
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Card } from 'semantic-ui-react'
 
 const ResultsContainer = (props) => {
 
 	// const handleSelect = (event) => {
 	// 	props.updateSetting(event.target.value)
 	// }
-	const select = (event) => {
-		props.handleSelect(event.target.value)
+	const select = (event, data) => {
+		console.log("rec", data)
+		props.handleSelect(data.value)
 	}
 
 	const options = [
@@ -26,13 +27,18 @@ const ResultsContainer = (props) => {
 
 	]
 
+	let movies = props.movies.map((movie, index) => <Movie key={index} movie={movie} handleClick={props.handleClick} />)
+	
 	return (
 		<div>
 			<center><h3>Choose the Correct Movie</h3>
-			<Dropdown placeholder="Select an Option" selection options={options} onChange={select} /></center>
+			<Dropdown placeholder="Select an Option" selection options={options} onChange={select} />
 				<br />
 				<br />
-				<MoviesContainer movies={props.movies} searchTerm={props.searchTerm} similarMovies={props.similarMovies}/>
+			<div>
+				{props.movies.length === 0 ? null : <Card.Group>{movies}</Card.Group> }
+			</div></center>
+			<MoviesContainer movies={props.movies} searchTerm={props.searchTerm} results={props.results} handleClick={props.handleClick} />
 		</div>
 	)
 	
