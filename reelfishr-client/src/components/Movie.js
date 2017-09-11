@@ -2,7 +2,6 @@ import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 
 const Movie = (props) => {
-	console.log("props from MOvie", props)
 
 	const handleClick = () => props.handleClick(props.movie)
 

@@ -4,12 +4,11 @@ import MoviesContainer from './MoviesContainer'
 import { Dropdown, Card } from 'semantic-ui-react'
 
 const ResultsContainer = (props) => {
-
 	// const handleSelect = (event) => {
 	// 	props.updateSetting(event.target.value)
 	// }
 	const select = (event, data) => {
-		console.log("rec", data)
+		// console.log("rec", data)
 		props.handleSelect(data.value)
 	}
 
