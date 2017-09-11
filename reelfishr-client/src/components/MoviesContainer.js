@@ -10,7 +10,6 @@ const MoviesContainer = (props) => {
 		<div>
 		<br />
 		<br />
-
 			<center>
 				<Card.Group>
 			{props.results.length === 0 ? null : props.results.map((movie, index) => <Movie key={index} 
