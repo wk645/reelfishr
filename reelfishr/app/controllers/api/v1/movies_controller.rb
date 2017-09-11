@@ -1,3 +1,6 @@
+require 'rest-client'
+require 'json'
+
 class Api::V1::MoviesController < ApplicationController
 
 	def index
@@ -11,23 +14,31 @@ class Api::V1::MoviesController < ApplicationController
 	end
 
 	def show
-		# find if the movie exists in the db
 		movie_title = params[:query].gsub(/\+/, ' ')
-		@movie = Movie.find_by(title: movie_title)
-		render json: @movie
-		# if !@movie
-		# 	# fetch 
-		# 	@movie = JSON.parse(RestClient.get("https://api.themoviedb.org/3/search/movie?api_key=2b11df788b627a6cd7c12d0399f6d17f&query=#{x}"))
-
-		# 	@movie.each do |m|
-		# 		mov = Movie.create(
-		# 			title: r["original_title"]
-		# 			)
-		# 	end
-		# end
+		@movie = Movie.all.select {|m| m.title.include?(movie_title)}
+		if @movie
+			render json: @movie
+		else
+			@movie = JSON.parse(RestClient.get("https://api.themoviedb.org/3/search/movie?api_key=2b11df788b627a6cd7c12d0399f6d17f&query=#{movie_title}"))["results"]
+			
+			@movie.each do |r|
+			mov = Movie.create(
+			title: r["original_title"], 
+			runtime: r["runtime"], 
+			popularity: r["popularity"], 
+			overview: r["overview"],  
+			poster_path: r["poster_path"],
+			tmdb_id: r["id"])
+			genres = r["genre_ids"].map {|g| Genre.find_by(tmdb_id: g)}
+			mov.genres << genres
+			end
+			render json: @movie
+		end
 	end
-	
-
 end
 
-## https://api.themoviedb.org/3/search/movie?api_key=2b11df788b627a6cd7c12d0399f6d17f&query=Jack+Reacher
+
+
+
+
+

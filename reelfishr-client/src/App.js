@@ -27,11 +27,10 @@ class App extends Component {
 
 		fetch(`http://localhost:3000/api/v1/movie/${movieUrl}`)
 		.then(res => res.json())
-		.then(movie => this.setState({
-			movies: movie
-		})
-		)
+		.then(movies => this.setState({ movies: movies }))
 	}
+
+	// console.log(this.state.movies)
 
 	handleChange = (value) => {
 		this.setState({ searchTerm: value })
@@ -43,7 +42,7 @@ class App extends Component {
 
   render() {
   	// console.log(this.state.searchTerm)
-  	// console.log(this.state.movies)
+  	console.log(this.state.movies)
     return (
       <div>
         <Home />

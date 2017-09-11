@@ -1,9 +1,10 @@
 require 'rest-client'
 require 'json'
 
-genres = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
+genres = [{name: "Action", id: 28}, {name: "Adventure", id: 12}, {name: "Animation", id: 16}, {name: "Comedy", id: 35}, {name: "Crime", id: 80}, {name: "Documentary", id: 99}, {name: "Drama", id: 18}, {name: "Family", id: 10751}, {name: "Fantasy", id: 14}, {name: "History", id: 36}, {name: "Horror", id: 27}, {name: "Music", id: 10402}, {name: "Mystery", id: 9648}, {name: "Romance", id: 10749}, {name: "Science Fiction", id: 878}, {name: "TV Movie", id: 10770}, {name: "Thriller", id: 53}, {name: "War", id: 10752}, {name: "Western", id: 37}]
 
-genres.each {|g| Genre.create(name: g)}
+
+genres.each {|g, id| Genre.create(name: g[:name],tmdb_id: g[:id])}
 
 movies = [12, 152, 154, 157, 168, 172, 174, 193, 199, 200, 201, 268, 272, 364, 408, 557, 558, 559, 585, 756, 862, 863, 1930, 2062, 9325, 9487, 9806, 10112, 10138, 10193, 10340, 10948, 11224, 11544, 11674, 11688, 13475, 17711, 26452]
 
