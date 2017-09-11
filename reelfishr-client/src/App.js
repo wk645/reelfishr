@@ -31,23 +31,20 @@ class App extends Component {
 		.then(movies => this.setState({ movies: movies }))
 	}
 
-	// console.log(this.state.movies)
-
 	handleChange = (value) => {
 		this.setState({ searchTerm: value })
 	}
 
 	handleSelect = (value) => {
-		console.log("value from App", value)
 		this.setState({ setting: value })
 	}
 
-	handleClick = (target) => {		
+	handleClick = (target) => {
 		this.fetchFromAPI(target.tmdb_id)
 	}
 
   render() {
-
+    console.log(this.state.movies)
     return (
       <div>
         <Home />

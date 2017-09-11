@@ -4,7 +4,7 @@ import { Card } from 'semantic-ui-react'
 
 
 const MoviesContainer = (props) => {
-	
+
 
 	return (
 		<div>
@@ -12,8 +12,9 @@ const MoviesContainer = (props) => {
 		<br />
 
 			<center>
+				<h3>{props.setting}</h3>
 				<Card.Group>
-			{props.results.length === 0 ? null : props.results.map((movie, index) => <Movie key={index} 
+			{props.results.length === 0 ? null : props.results.map((movie, index) => <Movie key={index}
 				movie={movie} />)}
 				</Card.Group>
 			</center>
@@ -22,7 +23,3 @@ const MoviesContainer = (props) => {
 }
 
 export default MoviesContainer
-
-
-
-  

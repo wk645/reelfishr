@@ -2,44 +2,46 @@ import React from 'react'
 import Movie from './Movie'
 import MoviesContainer from './MoviesContainer'
 import { Dropdown, Card, Dimmer, Loader, Segment } from 'semantic-ui-react'
-
+import {Route } from 'react-router-dom'
 const ResultsContainer = (props) => {
 
 	const select = (event, data) => {
-		
 		props.handleSelect(data.value)
 	}
 
 	const options = [
-	  
 	  {
 	    text: 'Get Similar Movies',
 	    value: 'similar'
 	  },
-
 	  {
 	    text: 'Get Recommendations',
 	    value: 'recommendations'
 	  }
-
 	]
 
 	let movies = props.movies.map((movie, index) => <Movie key={index} movie={movie} handleClick={props.handleClick} />)
-	
+
 	return (
 		<div>
-			<center><h3>Choose the Correct Movie</h3>
-			<Dropdown placeholder="Select an Option" selection options={options} onChange={select} />
+			<Route path='/' render={() => <center>
+				<h3>Choose the Correct Movie</h3>
+				<Dropdown placeholder="Select an Option" selection options={options} onChange={select} />
 				<br />
 				<br />
-			<div>
+				<div>
 				{props.movies.length === 0 ? null : <Card.Group>{movies}</Card.Group> }
-			</div></center>
-			<MoviesContainer movies={props.movies} searchTerm={props.searchTerm} results={props.results} handleClick={props.handleClick} />
+			</div>
+		</center>}>
+
+		</Route>
+
+
+			<MoviesContainer movies={props.movies} searchTerm={props.searchTerm} results={props.results} handleClick={props.handleClick} setting={props.setting}/>
 
 		</div>
 	)
-	
+
 }
 			// <Segment>
 	  //     	<Dimmer active={false}>
@@ -48,5 +50,3 @@ const ResultsContainer = (props) => {
 	    	// </Segment>
 
 export default ResultsContainer
-
-			
