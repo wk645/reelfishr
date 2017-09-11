@@ -18,7 +18,7 @@ class Api::V1::MoviesController < ApplicationController
 		@movie = Movie.all.select {|m| m.title.include?(movie_title)}
 		if @movie
 			
-			res = JSON.parse(RestClient.get("https://api.themoviedb.org/3/search/movie?api_key=2b11df788b627a6cd7c12d0399f6d17f&query=#{movie_title}"))["results"].reject {|m| @movie.pluck(:tmdb_id).include?(m["id"])}
+			res = JSON.parse(RestClient.get("https://api.themoviedb.org/3/search/movie?api_key=2b11df788b627a6cd7c12d0399f6d17f&language=en-US&include_adult=false&query=#{movie_title}"))["results"].reject {|m| @movie.pluck(:tmdb_id).include?(m["id"])}
 
 			results = res.map do |r|
 			mov = Movie.create(
@@ -36,7 +36,7 @@ class Api::V1::MoviesController < ApplicationController
 			
 			render json: @movie
 		else
-			@movie = JSON.parse(RestClient.get("https://api.themoviedb.org/3/search/movie?api_key=2b11df788b627a6cd7c12d0399f6d17f&query=#{movie_title}"))["results"]
+			@movie = JSON.parse(RestClient.get("https://api.themoviedb.org/3/search/movie?api_key=2b11df788b627a6cd7c12d0399f6d17f&language=en-US&include_adult=false&query=#{movie_title}"))["results"]
 			
 			@movie.each do |r|
 			mov = Movie.create(

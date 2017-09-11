@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Button } from 'semantic-ui-react'
+import { Input, Button, Popup } from 'semantic-ui-react'
 
 const Search = (props) => {
 
@@ -18,7 +18,8 @@ const Search = (props) => {
 	return (
 		<div><center>
 			<br />
-			<Input type="text" onChange={change} value={props.searchTerm} focus placeholder="Search for a Movie..." />
+			<br />
+			<Popup trigger={<Input type="text" onChange={change} value={props.searchTerm} focus placeholder="Search for a Movie..." />} header="Movie Search" content="Type in a movie that you'd like to see or get information about!" on="focus" />
 			<Button secondary onClick={click} type="submit" value="Submit" name="Submit">Submit</Button>
 			<br />
 			<br />
@@ -27,12 +28,3 @@ const Search = (props) => {
 }
 
 export default Search
-
-// <Dropdown placeholder="Select an Option" fluid selection options={options} onChange={select} />
-
-// <select onChange={select}>
-// 	<option value="similar">Get Similar Movies
-// 	</option>
-// 	<option value="recommendations">Get Recommendations
-// 	</option>
-// </select>

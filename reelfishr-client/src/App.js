@@ -42,15 +42,12 @@ class App extends Component {
 		this.setState({ setting: value })
 	}
 
-	handleClick = (target) => {
-		// this.setState({ targetMovie: target})
+	handleClick = (target) => {		
 		this.fetchFromAPI(target.tmdb_id)
-		// console.log(target.tmdb_id)
 	}
 
   render() {
-  	// console.log(this.state.searchTerm)
-  	// console.log(this.state.movies)
+
     return (
       <div>
         <Home />

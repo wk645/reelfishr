@@ -1,14 +1,12 @@
 import React from 'react'
 import Movie from './Movie'
 import MoviesContainer from './MoviesContainer'
-import { Dropdown, Card } from 'semantic-ui-react'
+import { Dropdown, Card, Dimmer, Loader, Segment } from 'semantic-ui-react'
 
 const ResultsContainer = (props) => {
-	// const handleSelect = (event) => {
-	// 	props.updateSetting(event.target.value)
-	// }
+
 	const select = (event, data) => {
-		// console.log("rec", data)
+		
 		props.handleSelect(data.value)
 	}
 
@@ -38,13 +36,17 @@ const ResultsContainer = (props) => {
 				{props.movies.length === 0 ? null : <Card.Group>{movies}</Card.Group> }
 			</div></center>
 			<MoviesContainer movies={props.movies} searchTerm={props.searchTerm} results={props.results} handleClick={props.handleClick} />
+
 		</div>
 	)
 	
 }
+			// <Segment>
+	  //     	<Dimmer active={false}>
+	  //       <Loader >Preparing List</Loader>
+	  //     	</Dimmer>
+	    	// </Segment>
 
 export default ResultsContainer
 
-
-
-// onSubmit => results container => display all movies that match the result (array) => for that movie onClick => similar / recommendations
+			
