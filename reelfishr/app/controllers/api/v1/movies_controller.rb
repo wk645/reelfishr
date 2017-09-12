@@ -28,7 +28,6 @@ class Api::V1::MoviesController < ApplicationController
 				overview: r["overview"],
 				poster_path: r["poster_path"],
 				tmdb_id: r["id"])
-				# byebug
 				if r['genre_ids'].present?
 					genres = r['genre_ids'].map {|g| Genre.find_by(tmdb_id: g)}
 				else
