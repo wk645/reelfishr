@@ -51,12 +51,13 @@ class App extends Component {
       <div>
         <NavBar />
         <Route exact path="/" component={Home} />
-        <Search searchTerm={this.state.searchTerm} fetchMovies={this.fetchMovies} handleSelect={this.handleSelect} handleChange={this.handleChange} />
-        <ResultsContainer setting={this.state.setting} movies={this.state.movies} searchTerm={this.state.searchTerm} results={this.state.results} handleClick={this.handleClick} handleSelect={this.handleSelect} />
+        <Route exact path="/Search" render={() => <Search searchTerm={this.state.searchTerm} fetchMovies={this.fetchMovies} handleSelect={this.handleSelect} handleChange={this.handleChange} />} />
+        <Route path="/Search" render={() => <ResultsContainer setting={this.state.setting} movies={this.state.movies} searchTerm={this.state.searchTerm} results={this.state.results} handleClick={this.handleClick} handleSelect={this.handleSelect} />} />
       </div>
     );
   }
 }
+        // <Route path='/search/:movie_id' component={Movie} />
         // <Route exact path="/search" component={Search} />
 
 export default App;

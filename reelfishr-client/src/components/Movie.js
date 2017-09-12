@@ -1,53 +1,41 @@
 import React from 'react'
-import { Card, Image, Popup, Button } from 'semantic-ui-react'
+import MovieCardFront from './MovieCardFront'
+import MovieCardBack from './MovieCardBack'
+import { Card } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
-const Movie = (props) => {
 
-	const handleClick = () => props.handleClick(props.movie)
+export default class Movie extends React.Component {
+	constructor(props) {
+		super(props)
 
-	return (
+		this.state = {
+			movie: props.movie,
+			front: true
+		}
+	}
 
-		<Card onClick={handleClick} >
-			<Image src={`http://image.tmdb.org/t/p/w185//${props.movie.poster_path}`} alt="Image not Found" />
-			<Card.Content>
-			<Card.Header>{props.movie.title}</Card.Header>
-			</Card.Content>
-			<Popup trigger={<Button icon>Movie Info</Button>} 
-			header={props.movie.title} 
-			content={props.movie.overview}
-			on={['hover', 'click']} />
-		</Card>
+	handleClick = () => 
+		{this.props.handleClick(this.state.movie)}
 
-	)
+	MouseEnter = () => {
+		console.log("MouseEntering")
+		this.setState({ front: false })
+	}
+
+	MouseLeave = () => {
+		console.log("MouseLeaving")
+		this.setState({ front: true })
+	}
+
+
+	render() {
+		return (
+			<Card onClick={this.handleClick} onMouseEnter={this.MouseEnter} onMouseLeave={this.MouseLeave}>
+				<Link to={`/search/${this.state.movie.id}`}> 
+				{this.state.front ? <MovieCardFront movie={this.state.movie} /> : <MovieCardBack movie={this.state.movie} /> }
+				</Link>
+			</Card>
+		)
+	}
 }
-
-export default Movie
-
-// displayModal = (movie) => {
-// 		return (
-// 		  <Modal open={this.state.clicked} onClose={this.handleClick}>
-// 		    <Modal.Header>{team.name}</Modal.Header>
-// 		    <Modal.Content image>
-// 		      <Image wrapped size='medium' src={team.crestUrl} />
-// 		      <Modal.Description>
-// 		        <Header>{team.name}</Header>
-// 		        <Players team={team} />
-// 		      </Modal.Description>
-// 		    </Modal.Content>
-// 		  </Modal>	
-// 		)
-// 	}
-
-// 	render() {
-// 		return (
-// 			<Grid.Column>
-// 				<Card>
-// 				<Image centered onClick={this.handleClick} style={{width: 250, height: 250}} src={this.state.team.crestUrl} />
-// 				<Card.Content>
-// 				<Card.Header>{this.state.team.name}</Card.Header>
-// 				</Card.Content>
-// 				</Card>
-// 				{this.state.clicked && this.displayModal(this.state.team)}
-// 			</Grid.Column>
-// 		)
-// 	}

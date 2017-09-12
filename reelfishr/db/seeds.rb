@@ -35,7 +35,7 @@ JSON.parse(RestClient.get("https://api.themoviedb.org/3/movie/#{x}?api_key=2b11d
 requests.each do |r|
 	mov = Movie.create(
 		title: r["original_title"],
-		runtime: r["runtime"],
+		release_date: r["release_date"],
 		popularity: r["popularity"],
 		overview: r["overview"],
 		poster_path: r["poster_path"],

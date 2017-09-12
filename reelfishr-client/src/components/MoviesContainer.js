@@ -7,6 +7,7 @@ const MoviesContainer = (props) => {
 
 
 	return (
+
 		<div>
 		<br />
 		<br />
@@ -14,7 +15,7 @@ const MoviesContainer = (props) => {
 				<h3>{props.setting}</h3>
 				<Card.Group>
 			{props.results.length === 0 ? null : props.results.map((movie, index) => <Movie key={index}
-				movie={movie} />)} 
+				movie={movie} handleClick={props.handleClick} />)} 
 				</Card.Group>
 			</center>
   		</div>
@@ -22,3 +23,6 @@ const MoviesContainer = (props) => {
 }
 
 export default MoviesContainer
+
+// <Route path='/search/:movie_id/recommendation' render={() => } />
+// <Route path='/search/:movie_id/similar' render={() => } />

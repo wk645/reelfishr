@@ -23,17 +23,17 @@ class Api::V1::MoviesController < ApplicationController
 			results = res.map do |r|
 				mov = Movie.create(
 				title: r["original_title"],
-				runtime: r["runtime"],
+				release_date: r["release_date"].split("-")[0],
 				popularity: r["popularity"],
 				overview: r["overview"],
 				poster_path: r["poster_path"],
 				tmdb_id: r["id"])
-				if r['genre_ids'].present?
-					genres = r['genre_ids'].map {|g| Genre.find_by(tmdb_id: g)}
+				if r['genre_ids'].empty?
+					@genres = Genre.find_by(tmdb_id: 74)
 				else
-					genres = "Miscellaneous"
+					@genres = r['genre_ids'].map {|g| Genre.find_by(tmdb_id: g)}
 				end
-				mov.genres << genres
+				mov.genres << @genres
 				mov
 			end
 			@movie.concat(results)
@@ -45,17 +45,17 @@ class Api::V1::MoviesController < ApplicationController
 			@movie.each do |r|
 				mov = Movie.create(
 				title: r["original_title"],
-				runtime: r["runtime"],
+				release_date: r["release_date"].split("-")[0],
 				popularity: r["popularity"],
 				overview: r["overview"],
 				poster_path: r["poster_path"],
 				tmdb_id: r["id"])
-				if r["genre_ids"].empty? || !r["genre_ids"].present?
-					genres = "Miscellaneous"
+				if r['genre_ids'].empty?
+					@genres = Genre.find_by(tmdb_id: 74)
 				else
-					genres = r['genre_ids'].map {|g| Genre.find_by(tmdb_id: g)}
+					@genres = r['genre_ids'].map {|g| Genre.find_by(tmdb_id: g)}
 				end
-				mov.genres << genres
+				mov.genres << @genres
 			end
 			render json: @movie
 		end
