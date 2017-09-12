@@ -33,7 +33,6 @@ class Api::V1::MoviesController < ApplicationController
 					genres = r['genre_ids'].map {|g| Genre.find_by(tmdb_id: g)}
 				else
 					genres = "Miscellaneous"
-					byebug
 				end
 				mov.genres << genres
 				mov

@@ -3,6 +3,8 @@ import './App.css';
 import Home from './components/Home'
 import ResultsContainer from './components/ResultsContainer'
 import Search from './components/Search'
+import NavBar from './components/NavBar'
+import { Route } from 'react-router-dom'
 
 class App extends Component {
 
@@ -47,12 +49,14 @@ class App extends Component {
     console.log(this.state.movies)
     return (
       <div>
-        <Home />
+        <NavBar />
+        <Route exact path="/" component={Home} />
         <Search searchTerm={this.state.searchTerm} fetchMovies={this.fetchMovies} handleSelect={this.handleSelect} handleChange={this.handleChange} />
         <ResultsContainer setting={this.state.setting} movies={this.state.movies} searchTerm={this.state.searchTerm} results={this.state.results} handleClick={this.handleClick} handleSelect={this.handleSelect} />
       </div>
     );
   }
 }
+        // <Route exact path="/search" component={Search} />
 
 export default App;

@@ -1,8 +1,8 @@
 import React from 'react'
 import Movie from './Movie'
 import MoviesContainer from './MoviesContainer'
-import { Dropdown, Card, Dimmer, Loader, Segment } from 'semantic-ui-react'
-import {Route } from 'react-router-dom'
+import { Dropdown, Card } from 'semantic-ui-react'
+// import {Route } from 'react-router-dom'
 const ResultsContainer = (props) => {
 
 	const select = (event, data) => {
@@ -24,7 +24,7 @@ const ResultsContainer = (props) => {
 
 	return (
 		<div>
-			<Route path='/' render={() => <center>
+			<center>
 				<h3>Choose the Correct Movie</h3>
 				<Dropdown placeholder="Select an Option" selection options={options} onChange={select} />
 				<br />
@@ -32,10 +32,7 @@ const ResultsContainer = (props) => {
 				<div>
 				{props.movies.length === 0 ? null : <Card.Group>{movies}</Card.Group> }
 			</div>
-		</center>}>
-
-		</Route>
-
+			</center>
 
 			<MoviesContainer movies={props.movies} searchTerm={props.searchTerm} results={props.results} handleClick={props.handleClick} setting={props.setting}/>
 
@@ -43,10 +40,5 @@ const ResultsContainer = (props) => {
 	)
 
 }
-			// <Segment>
-	  //     	<Dimmer active={false}>
-	  //       <Loader >Preparing List</Loader>
-	  //     	</Dimmer>
-	    	// </Segment>
 
 export default ResultsContainer
