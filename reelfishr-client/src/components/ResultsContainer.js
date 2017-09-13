@@ -30,11 +30,13 @@ const ResultsContainer = (props) => {
 				<Dropdown placeholder="Select an Option" selection options={options} onChange={select} />
 				<br />
 				<br />
-				<div>
-				{props.movies.length === 0 ? null : <Card.Group>{movies}</Card.Group> }
+			<div>
+				
+				{props.movies.length === 0 ? null : <Card.Group className="displayGrid">{movies}</Card.Group> }
+				
 			</div>
-			</center>
 			<Route exact path='/search' render={() => <MoviesContainer movies={props.movies} searchTerm={props.searchTerm} results={props.results} handleClick={props.handleClick} setting={props.setting}/> } />
+			</center>
 			
 
 		</div>
@@ -43,3 +45,5 @@ const ResultsContainer = (props) => {
 }
 
 export default ResultsContainer
+
+// <Route exact path=`/search/:id/${props.setting}` render={() => <MoviesContainer movies={props.movies} searchTerm={props.searchTerm} results={props.results} handleClick={props.handleClick} setting={props.setting}/> } />

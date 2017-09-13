@@ -1,7 +1,7 @@
 // Home, search routes
 
 import React from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Segment } from 'semantic-ui-react'
 import { NavLink, Route } from 'react-router-dom'
 import Search from './Search'
 
@@ -14,7 +14,8 @@ export default class MenuExampleBasic extends React.Component {
     const { activeItem } = this.state
 
     return (
-      <Menu inverted className="main-nav">
+    <Segment inverted>
+      <Menu inverted pointing secondary className="main-nav">
         <Menu.Item
           as={NavLink} to="/" exact name="Home" active={activeItem === 'Home'} onClick={this.handleItemClick}
         >
@@ -26,10 +27,11 @@ export default class MenuExampleBasic extends React.Component {
           Search
         </Menu.Item>
 
-        <Menu.Item>
+        <Menu.Item style={{width: 298.95}} className="search">
         <Route exact path="/Search" render={() => <Search searchTerm={this.props.searchTerm} fetchMovies={this.props.fetchMovies} handleSelect={this.props.handleSelect} handleChange={this.props.handleChange} />} />
         </Menu.Item>
       </Menu>
+    </Segment>
     )
   }
 }

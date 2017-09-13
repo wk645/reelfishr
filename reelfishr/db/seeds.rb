@@ -21,7 +21,8 @@ genres = [
 	{name: "Thriller", id: 53},
 	{name: "War", id: 10752},
 	{name: "Western", id: 37},
-	{name: "Miscellaneous", id: 74}
+	{name: "Miscellaneous", id: 74},
+	{name: "Foreign", id: 10769}
 ]
 
 

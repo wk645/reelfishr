@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+
 .App {
   text-align: center;
 }
 
 .home h1 {
-	font-size: 60px;
+	font-size: 80px;
+	font-family: 'Monoton', cursive;
 }
 
 .searchHeader {
@@ -11,5 +14,17 @@
 }
 
 .main-nav {
-	height:64px;
+	height: 52px
+}
+
+.displayGrid {
+	width: 1216px;
+}
+
+.ui.secondary.inverted.pointing.menu .item.search {
+	padding-bottom: 0px
+}
+
+div.ui.inverted.segment {
+	padding-top: 0px
 }

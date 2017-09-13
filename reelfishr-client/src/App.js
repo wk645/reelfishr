@@ -15,7 +15,7 @@ class App extends Component {
 		results: [],
 		targetMovie: "",
 		searchTerm: "",
-		setting: "similar"
+		setting: ""
   	}
   }
 
@@ -25,7 +25,7 @@ class App extends Component {
 	}
 
 	fetchMovies = (movie) => {
-	let movieUrl = movie.replace(/\s/, '+')
+	let movieUrl = movie.replace(/\s/, '+').toLowerCase()
 		fetch(`http://localhost:3000/api/v1/movie/${movieUrl}`)
 		.then(res => res.json())
 		.then(movies => this.setState({ movies: movies }))
@@ -46,12 +46,12 @@ class App extends Component {
 
 
   render() {
-  	console.log("I am rendering hopefully after statechange")
+  	
     return (
       <div>
         <NavBar searchTerm={this.state.searchTerm} fetchMovies={this.fetchMovies} handleSelect={this.handleSelect} handleChange={this.handleChange}/>
         <Route exact path="/" component={Home} />
-        <Route path="/Search" render={() => <ResultsContainer setting={this.state.setting} movies={this.state.movies} searchTerm={this.state.searchTerm}handleClick={this.handleClick} handleSelect={this.handleSelect} results={this.state.results} />} />
+        <Route path="/search" render={() => <ResultsContainer setting={this.state.setting} movies={this.state.movies} searchTerm={this.state.searchTerm}handleClick={this.handleClick} handleSelect={this.handleSelect} results={this.state.results} />} />
       </div>
     );
   }
