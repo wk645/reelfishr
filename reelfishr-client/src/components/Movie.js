@@ -14,12 +14,6 @@ export default class Movie extends React.Component {
 		}
 	}
 
-	handleClick = () => {
-		this.props.handleClick(this.props.movie)
-		this.props.history.push(`/search/${this.props.movie.id}`)
-
-	}
-
 	MouseEnter = () => {
 		this.setState({ front: false })
 	}
@@ -35,7 +29,7 @@ export default class Movie extends React.Component {
 	poster = (poster === 'unavailable.jpg' ? poster = 'unavailable.jpg' : poster = `http://image.tmdb.org/t/p/w185/${this.props.movie.poster_path}`)
 
 		return (
-			<Card onClick={this.handleClick} onMouseEnter={this.MouseEnter} onMouseLeave={this.MouseLeave}> 
+			<Card onMouseEnter={this.MouseEnter} onMouseLeave={this.MouseLeave}> 
 					{this.state.front ? <Image src={poster} /> : null}
 					{this.state.front ? <MovieCardFront movie={this.props.movie} /> : <MovieCardBack movie={this.props.movie} /> }
 			</Card>

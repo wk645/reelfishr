@@ -6,7 +6,7 @@ import '../App.css';
 const Home = () => {
 	return (
 		<div className="home"><center>
-			<h1>Welcome to Reelfishr</h1>
+			<h1>Reelfishr</h1>
 			<br />
 			<br />
 		<Message className="border" style={{width: 700}}>

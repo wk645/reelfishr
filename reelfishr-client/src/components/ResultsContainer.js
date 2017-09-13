@@ -1,12 +1,15 @@
 import React from 'react'
 import Movie from './Movie'
+import Clickable from './hocs/Clickable'
 
 import { Card } from 'semantic-ui-react'
 
 
 const ResultsContainer = (props) => {
 
-	let movies = props.movies.map((movie, index) => <Movie key={index} history={props.history} movie={movie} handleClick={props.handleClick} />)
+	let movies = props.movies.map((movie, index) => {
+		const MovieWithClick = Clickable(Movie)
+		return <MovieWithClick className="clickable" key={index} history={props.history} movie={movie} handleClick={props.handleClick} />})
 
 	return (
 		<div>

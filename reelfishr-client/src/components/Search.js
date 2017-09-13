@@ -16,10 +16,9 @@ const Search = (props) => {
 	return (
 		<div>
 			<Popup trigger={<Input type="text" onChange={change} value={props.searchTerm} focus placeholder="Search for a Movie..." />} header="Movie Search" content="Type in a movie that you'd like to see or get information about!" on="focus" />
-			<Button secondary onClick={click} type="submit" value="Submit" name="Submit">Submit</Button>
+			<Button basic inverted color='yellow' secondary onClick={click} type="submit" value="Submit" name="Submit">Submit</Button>
 		</div>
     )
 }
 
 export default Search
-

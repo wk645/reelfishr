@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Monoton');
 @import url('https://fonts.googleapis.com/css?family=Poller+One');
+@import url('https://fonts.googleapis.com/css?family=Averia+Libre');
+
 
 .App {
   text-align: center;
@@ -8,6 +10,11 @@
 .home h1 {
 	font-size: 80px;
 	font-family: 'Monoton', cursive;
+	text-shadow: 0.25px 0 white, 0 3px white, 3px 0 white, 0 0.25px white;
+}
+
+h2 {
+	text-shadow: 0.25px 0 white, 0 3px white, 3px 0 white, 0 0.25px white;
 }
 
 .searchHeader {
@@ -32,19 +39,29 @@ div.ui.inverted.segment {
 
 .ui.card>.content .title.header {
 	font-family: 'Poller One', cursive;
-}
-
-.ui.card>.content .title.synopsis {
-	font-family: 'Poller One', cursive;
+	padding: 2px;
 }
 
 .ui.card>.content, .ui.cards>.card>.content.header {
 	background-color: lightyellow;
+	max-height: 52px;
+	padding: 8px;
 }
 
+.ui.inverted.yellow.basic.button:active {
+	color: yellow;
+}
+
+/* change to LIGHT YELLOW!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+.ui.card>.image, .ui.cards>.card>.image {
+	height: 250px;
+	width: 200px;
+}
 
 .ui.card>.content {
 	color: black;
+	font-family: 'Averia Libre', cursive;
 }
 
  .border {
@@ -59,15 +76,16 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-image: url(reel.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;  
 }
 
-body::after {
+/*body::after {
   content: "";
-  background-image: url(reel.jpg);
   height: 100%;
   background-position: center;
   background-size: cover;
-  background-repeat: repeat;
   opacity: 0.3;
   top: 0;
   left: 0;
@@ -75,5 +93,28 @@ body::after {
   right: 0;
   position: absolute;
   z-index: -1;   
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
+*/
+/*.background img {
+	z-index: -1;
+	position: absolute;
+	opacity: 0.3;
+	height: auto;
+	background-size: cover;
+	background-attachment: fixed;
+}*/
+
+/*position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0.2;
+    z-index: -1;*/
+
+
 
