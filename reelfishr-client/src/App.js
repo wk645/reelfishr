@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from './components/Home'
 import ResultsContainer from './components/ResultsContainer'
+import MoviesContainer from './components/MoviesContainer'
+import Back from './components/Back'
 import NavBar from './components/NavBar'
 import { Route } from 'react-router-dom'
+import Select from './components/Select'
 
 class App extends Component {
 
@@ -50,8 +53,11 @@ class App extends Component {
     return (
       <div>
         <NavBar searchTerm={this.state.searchTerm} fetchMovies={this.fetchMovies} handleSelect={this.handleSelect} handleChange={this.handleChange}/>
+        <Route path="/search/:id" component={Back} />
         <Route exact path="/" component={Home} />
-        <Route path="/search" render={() => <ResultsContainer setting={this.state.setting} movies={this.state.movies} searchTerm={this.state.searchTerm}handleClick={this.handleClick} handleSelect={this.handleSelect} results={this.state.results} />} />
+        <Route exact path="/search" render={() => <Select handleSelect={this.handleSelect} />}/>
+        <Route exact path="/search" render={({history}) => <ResultsContainer setting={this.state.setting} history={history}movies={this.state.movies} searchTerm={this.state.searchTerm}handleClick={this.handleClick} handleSelect={this.handleSelect} results={this.state.results} />} />
+        <Route path="/search/:id" render={() => <MoviesContainer movies={this.state.movies} searchTerm={this.state.searchTerm} results={this.state.results} handleClick={this.handleClick} setting={this.state.setting}/> } />
       </div>
     );
   }
@@ -59,3 +65,7 @@ class App extends Component {
 
 
 export default App;
+
+
+
+		// <Route exact path='/search' render={() => <MoviesContainer movies={props.movies} searchTerm={props.searchTerm} results={props.results} handleClick={props.handleClick} setting={props.setting}/> } />

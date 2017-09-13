@@ -4,6 +4,7 @@ import MovieCardBack from './MovieCardBack'
 import { Card, Image } from 'semantic-ui-react'
 
 
+
 export default class Movie extends React.Component {
 	constructor(props) {
 		super(props)
@@ -15,6 +16,8 @@ export default class Movie extends React.Component {
 
 	handleClick = () => {
 		this.props.handleClick(this.props.movie)
+		this.props.history.push(`/search/${this.props.movie.id}`)
+
 	}
 
 	MouseEnter = () => {
@@ -33,9 +36,11 @@ export default class Movie extends React.Component {
 
 		return (
 			<Card onClick={this.handleClick} onMouseEnter={this.MouseEnter} onMouseLeave={this.MouseLeave}> 
-				{this.state.front ? <Image src={poster} /> : null}
-				{this.state.front ? <MovieCardFront movie={this.props.movie} /> : <MovieCardBack movie={this.props.movie} /> }
+					{this.state.front ? <Image src={poster} /> : null}
+					{this.state.front ? <MovieCardFront movie={this.props.movie} /> : <MovieCardBack movie={this.props.movie} /> }
 			</Card>
 		)
 	}
 }
+
+

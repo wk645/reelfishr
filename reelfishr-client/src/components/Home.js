@@ -9,7 +9,7 @@ const Home = () => {
 			<h1>Welcome to Reelfishr</h1>
 			<br />
 			<br />
-		<Message style={{width: 700}}>
+		<Message className="border" style={{width: 700}}>
 			<h3>
 				The team at Reelfishr works to recommend movies to our users. To get started, type in a movie and select one of the options to get your personalized list of movies! Enjoy!
 			</h3>
