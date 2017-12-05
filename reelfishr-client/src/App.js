@@ -56,7 +56,7 @@ class App extends Component {
         <Route path="/search/:id" component={Back} />
         <Route exact path="/" component={Home} />
         <Route exact path="/search" render={() => <Select handleSelect={this.handleSelect} />}/>
-        <Route exact path="/search" render={({history}) => <ResultsContainer setting={this.state.setting} history={history}movies={this.state.movies} searchTerm={this.state.searchTerm}handleClick={this.handleClick} handleSelect={this.handleSelect} results={this.state.results} />} />
+        <Route exact path="/search" render={({history}) => <ResultsContainer setting={this.state.setting} history={history} movies={this.state.movies} searchTerm={this.state.searchTerm} handleClick={this.handleClick} handleSelect={this.handleSelect} results={this.state.results} />} />
         <Route path="/search/:id" render={() => <MoviesContainer movies={this.state.movies} searchTerm={this.state.searchTerm} results={this.state.results} handleClick={this.handleClick} setting={this.state.setting}/> } />
       </div>
     );

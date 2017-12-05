@@ -23,8 +23,6 @@ const Select = (props) => {
 			<center>
 				<Dropdown className="border" placeholder="Select an Option" selection options={options} onChange={select} />
 			</center>
-			
-
 		</div>
 	)
 
